@@ -5,7 +5,7 @@ import random
 import time
 
 import sys
-relative_darknet_path = "../darknet_master" #Comment this if darknet.py is in the same directory as this file
+relative_darknet_path = "../../darknet_master" #Comment this if darknet.py is in the same directory as this file
 sys.path.append(relative_darknet_path) #Comment this if darknet.py is in the same directory as this file
 import darknet #Ignore the import warning if darknet.py is in ../<"directory-name">
 
