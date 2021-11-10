@@ -19,8 +19,7 @@ def vehicle_detection_engine(classifier, frame,
                 collect_det_dots_including_truck.append(
                     (box[0] + int(box[2] / 2), box[1] + int(box[3] / 2), box[2], box[3], frame_id, scores[iii]))
             cv2.rectangle(frame,(box[0],box[1]),(box[0]+box[2],box[1]+box[3]),(0.255,255),2)
-            cv2.imshow("frame",frame)
-            cv2.waitKey(1)
+
         iii += 1
 
     return collect_det_dots_including_truck, collect_cars,frame
@@ -32,9 +31,11 @@ def Vehicle_Detection_in_continuous_learning(vehicle_collected,count):
     global  collect_det_dots_including_truck,collect_cars
     if vehicle_collected:
         video_recording = False
-    while not vehicle_collected:
+    if not vehicle_collected:
         ret, frame = video.read()
         collect_det_dots_including_truck,collect_cars,frame=vehicle_detection_engine(classifier,frame,count)
+        cv2.imshow("frame", frame)
+        cv2.waitKey(1)
 
     return collect_det_dots_including_truck,collect_cars,frame,camera_angle_changed_ELS
 

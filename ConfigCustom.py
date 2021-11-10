@@ -31,9 +31,9 @@
 # FILE = "I-070 . 105.1 E OF SR 9 - Cam 175+2021-07-23+16.6.mp4"
 # FILE = "/media/meiqiu/9543d262-5f31-42de-bc3a-74b362717bd0/home/meiqiu@ads.iu.edu/Videos/video_for_TEST/sunny_2.mp4"
 # FILE = "/home/meiqiu@ads.iu.edu/Downloads/I-070 . 105.1 E OF SR 9 - Cam 175+2021-07-23+16.6.mp4"
-# FILE = "/home/meiqiu@ads.iu.edu/Downloads/cam_1.mp4"
+FILE = "/home/meiqiu@ads.iu.edu/Downloads/cam_1.mp4"
 # Cam 175
-FILE = "/media/meiqiu/00086C38000E07BE/videos_for_ indot/4.mp4"
+# FILE = "/media/meiqiu/00086C38000E07BE/videos_for_ indot/4.mp4"
 # Cam 176
 # FILE = "rtsp://10.7.109.22/stream0"
 # Cam 177
