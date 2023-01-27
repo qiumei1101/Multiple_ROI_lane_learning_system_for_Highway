@@ -74,3 +74,253 @@ Execution Time for total lane grouping: 1.283
 Execution Time for total lane fitting: 0.016
 Execution Time for total lane direction: 0.11
 Execution Time for total lane boundary: 0.004
+Execution Time for generate road map contour1: 0.154
+Execution Time for generate roi baseline1: 3.579
+Execution Time for generate lane center1: 0.208
+Execution Time for grouping1_0: 0.039
+Execution Time for lanefitting1_0: 0.005
+Execution Time for lanedirection1_0: 0.002
+Execution Time for laneboundary1_0: 0.001
+Execution Time for grouping1_1: 0.084
+Execution Time for lanefitting1_1: 0.007
+Execution Time for lanedirection1_1: 0.004
+Execution Time for laneboundary1_1: 0.001
+Execution Time for grouping1_2: 0.145
+Execution Time for lanefitting1_2: 0.009
+Execution Time for lanedirection1_2: 0.008
+Execution Time for laneboundary1_2: 0.002
+Execution Time for total lane grouping: 0.269
+Execution Time for total lane fitting: 0.021
+Execution Time for total lane direction: 0.014
+Execution Time for total lane boundary: 0.004
+Execution Time for generate road map contour2: 0.15
+Execution Time for generate roi baseline2: 1.67
+Execution Time for generate lane center2: 0.366
+Execution Time for grouping2_0: 0.102
+Execution Time for lanefitting2_0: 0.004
+Execution Time for lanedirection2_0: 0.003
+Execution Time for laneboundary2_0: 0.001
+Execution Time for grouping2_1: 0.234
+Execution Time for lanefitting2_1: 0.006
+Execution Time for lanedirection2_1: 0.008
+Execution Time for laneboundary2_1: 0.002
+Execution Time for grouping2_2: 0.332
+Execution Time for lanefitting2_2: 0.006
+Execution Time for lanedirection2_2: 0.016
+Execution Time for laneboundary2_2: 0.002
+Execution Time for total lane grouping: 0.668
+Execution Time for total lane fitting: 0.016
+Execution Time for total lane direction: 0.027
+Execution Time for total lane boundary: 0.004
+Execution Time for generate road map contour3: 0.178
+Execution Time for generate roi baseline3: 1.918
+Execution Time for generate lane center3: 0.341
+Execution Time for grouping3_0: 0.143
+Execution Time for lanefitting3_0: 0.004
+Execution Time for lanedirection3_0: 0.002
+Execution Time for laneboundary3_0: 0.001
+Execution Time for grouping3_1: 0.31
+Execution Time for lanefitting3_1: 0.006
+Execution Time for lanedirection3_1: 0.01
+Execution Time for laneboundary3_1: 0.002
+Execution Time for grouping3_2: 0.483
+Execution Time for lanefitting3_2: 0.007
+Execution Time for lanedirection3_2: 0.097
+Execution Time for laneboundary3_2: 0.002
+Execution Time for total lane grouping: 0.935
+Execution Time for total lane fitting: 0.017
+Execution Time for total lane direction: 0.109
+Execution Time for total lane boundary: 0.004
+Execution Time for generate road map contour1: 0.134
+Execution Time for generate roi baseline1: 3.119
+Execution Time for generate lane center1: 0.031
+Execution Time for grouping1_0: 0.038
+Execution Time for lanefitting1_0: 0.0
+Execution Time for lanedirection1_0: 0.0
+Execution Time for laneboundary1_0: 0.0
+Execution Time for grouping1_1: 0.04
+Execution Time for lanefitting1_1: 0.0
+Execution Time for lanedirection1_1: 0.0
+Execution Time for laneboundary1_1: 0.0
+Execution Time for total lane grouping: 0.078
+Execution Time for total lane fitting: 0.0
+Execution Time for total lane direction: 0.0
+Execution Time for total lane boundary: 0.0
+Execution Time for generate road map contour2: 0.167
+Execution Time for generate roi baseline2: 1.048
+Execution Time for generate lane center2: 0.232
+Execution Time for grouping2_0: 0.037
+Execution Time for lanefitting2_0: 0.004
+Execution Time for lanedirection2_0: 0.002
+Execution Time for laneboundary2_0: 0.0
+Execution Time for grouping2_1: 0.221
+Execution Time for lanefitting2_1: 0.007
+Execution Time for lanedirection2_1: 0.011
+Execution Time for laneboundary2_1: 0.002
+Execution Time for total lane grouping: 0.258
+Execution Time for total lane fitting: 0.011
+Execution Time for total lane direction: 0.012
+Execution Time for total lane boundary: 0.002
+Execution Time for generate road map contour3: 0.194
+Execution Time for generate roi baseline3: 1.137
+Execution Time for generate lane center3: 0.269
+Execution Time for grouping3_0: 0.03
+Execution Time for lanefitting3_0: 0.004
+Execution Time for lanedirection3_0: 0.002
+Execution Time for laneboundary3_0: 0.0
+Execution Time for grouping3_1: 0.156
+Execution Time for lanefitting3_1: 0.009
+Execution Time for lanedirection3_1: 0.011
+Execution Time for laneboundary3_1: 0.002
+Execution Time for total lane grouping: 0.187
+Execution Time for total lane fitting: 0.013
+Execution Time for total lane direction: 0.013
+Execution Time for total lane boundary: 0.002
+Execution Time for generate road map contour4: 0.23
+Execution Time for generate roi baseline4: 1.219
+Execution Time for generate lane center4: 0.294
+Execution Time for grouping4_0: 0.036
+Execution Time for lanefitting4_0: 0.003
+Execution Time for lanedirection4_0: 0.002
+Execution Time for laneboundary4_0: 0.0
+Execution Time for grouping4_1: 0.191
+Execution Time for lanefitting4_1: 0.05
+Execution Time for lanedirection4_1: 0.012
+Execution Time for laneboundary4_1: 0.002
+Execution Time for total lane grouping: 0.227
+Execution Time for total lane fitting: 0.054
+Execution Time for total lane direction: 0.014
+Execution Time for total lane boundary: 0.002
+Execution Time for generate road map contour1: 0.136
+Execution Time for generate roi baseline1: 3.113
+Execution Time for generate lane center1: 0.237
+Execution Time for grouping1_0: 0.033
+Execution Time for lanefitting1_0: 0.004
+Execution Time for lanedirection1_0: 0.001
+Execution Time for laneboundary1_0: 0.0
+Execution Time for grouping1_1: 0.063
+Execution Time for lanefitting1_1: 0.006
+Execution Time for lanedirection1_1: 0.004
+Execution Time for laneboundary1_1: 0.001
+Execution Time for grouping1_2: 0.116
+Execution Time for lanefitting1_2: 0.004
+Execution Time for lanedirection1_2: 0.007
+Execution Time for laneboundary1_2: 0.001
+Execution Time for total lane grouping: 0.213
+Execution Time for total lane fitting: 0.014
+Execution Time for total lane direction: 0.013
+Execution Time for total lane boundary: 0.003
+Execution Time for generate road map contour2: 0.174
+Execution Time for generate roi baseline2: 1.338
+Execution Time for generate lane center2: 0.349
+Execution Time for grouping2_0: 0.053
+Execution Time for lanefitting2_0: 0.003
+Execution Time for lanedirection2_0: 0.001
+Execution Time for laneboundary2_0: 0.0
+Execution Time for grouping2_1: 0.11
+Execution Time for lanefitting2_1: 0.004
+Execution Time for lanedirection2_1: 0.005
+Execution Time for laneboundary2_1: 0.001
+Execution Time for grouping2_2: 0.168
+Execution Time for lanefitting2_2: 0.003
+Execution Time for lanedirection2_2: 0.009
+Execution Time for laneboundary2_2: 0.001
+Execution Time for total lane grouping: 0.331
+Execution Time for total lane fitting: 0.01
+Execution Time for total lane direction: 0.016
+Execution Time for total lane boundary: 0.003
+Execution Time for generate road map contour3: 0.214
+Execution Time for generate roi baseline3: 1.487
+Execution Time for generate lane center3: 0.385
+Execution Time for grouping3_0: 0.078
+Execution Time for lanefitting3_0: 0.003
+Execution Time for lanedirection3_0: 0.002
+Execution Time for laneboundary3_0: 0.0
+Execution Time for grouping3_1: 0.206
+Execution Time for lanefitting3_1: 0.003
+Execution Time for lanedirection3_1: 0.007
+Execution Time for laneboundary3_1: 0.001
+Execution Time for grouping3_2: 0.184
+Execution Time for lanefitting3_2: 0.002
+Execution Time for lanedirection3_2: 0.008
+Execution Time for laneboundary3_2: 0.001
+Execution Time for total lane grouping: 0.468
+Execution Time for total lane fitting: 0.009
+Execution Time for total lane direction: 0.016
+Execution Time for total lane boundary: 0.002
+Execution Time for generate road map contour4: 0.24
+Execution Time for generate roi baseline4: 1.579
+Execution Time for generate lane center4: 0.503
+Execution Time for grouping4_0: 0.114
+Execution Time for lanefitting4_0: 0.003
+Execution Time for lanedirection4_0: 0.001
+Execution Time for laneboundary4_0: 0.0
+Execution Time for grouping4_1: 0.219
+Execution Time for lanefitting4_1: 0.003
+Execution Time for lanedirection4_1: 0.008
+Execution Time for laneboundary4_1: 0.001
+Execution Time for grouping4_2: 0.27
+Execution Time for lanefitting4_2: 0.002
+Execution Time for lanedirection4_2: 0.01
+Execution Time for laneboundary4_2: 0.001
+Execution Time for total lane grouping: 0.603
+Execution Time for total lane fitting: 0.008
+Execution Time for total lane direction: 0.02
+Execution Time for total lane boundary: 0.002
+Execution Time for generate road map contour1: 0.134
+Execution Time for generate roi baseline1: 3.305
+Execution Time for generate lane center1: 0.23
+Execution Time for grouping1_0: 0.049
+Execution Time for lanefitting1_0: 0.004
+Execution Time for lanedirection1_0: 0.002
+Execution Time for laneboundary1_0: 0.001
+Execution Time for grouping1_1: 0.086
+Execution Time for lanefitting1_1: 0.007
+Execution Time for lanedirection1_1: 0.004
+Execution Time for laneboundary1_1: 0.001
+Execution Time for grouping1_2: 0.192
+Execution Time for lanefitting1_2: 0.005
+Execution Time for lanedirection1_2: 0.01
+Execution Time for laneboundary1_2: 0.002
+Execution Time for total lane grouping: 0.327
+Execution Time for total lane fitting: 0.016
+Execution Time for total lane direction: 0.016
+Execution Time for total lane boundary: 0.003
+Execution Time for generate road map contour2: 0.164
+Execution Time for generate roi baseline2: 1.644
+Execution Time for generate lane center2: 0.332
+Execution Time for grouping2_0: 0.083
+Execution Time for lanefitting2_0: 0.004
+Execution Time for lanedirection2_0: 0.002
+Execution Time for laneboundary2_0: 0.0
+Execution Time for grouping2_1: 0.179
+Execution Time for lanefitting2_1: 0.005
+Execution Time for lanedirection2_1: 0.007
+Execution Time for laneboundary2_1: 0.001
+Execution Time for grouping2_2: 0.301
+Execution Time for lanefitting2_2: 0.006
+Execution Time for lanedirection2_2: 0.015
+Execution Time for laneboundary2_2: 0.002
+Execution Time for total lane grouping: 0.564
+Execution Time for total lane fitting: 0.014
+Execution Time for total lane direction: 0.024
+Execution Time for total lane boundary: 0.004
+Execution Time for generate road map contour3: 0.197
+Execution Time for generate roi baseline3: 1.861
+Execution Time for generate lane center3: 0.37
+Execution Time for grouping3_0: 0.164
+Execution Time for lanefitting3_0: 0.003
+Execution Time for lanedirection3_0: 0.002
+Execution Time for laneboundary3_0: 0.0
+Execution Time for grouping3_1: 0.358
+Execution Time for lanefitting3_1: 0.005
+Execution Time for lanedirection3_1: 0.009
+Execution Time for laneboundary3_1: 0.002
+Execution Time for grouping3_2: 0.477
+Execution Time for lanefitting3_2: 0.004
+Execution Time for lanedirection3_2: 0.095
+Execution Time for laneboundary3_2: 0.001
+Execution Time for total lane grouping: 0.998
+Execution Time for total lane fitting: 0.013
+Execution Time for total lane direction: 0.106
+Execution Time for total lane boundary: 0.003

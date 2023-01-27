@@ -9,13 +9,13 @@ To run this project, you will need to:
       1. install Yolov7 following the guildance https://github.com/WongKinYiu/yolov7.git or install any other detectors
         
       2. install Python 3 and Anaconda. 
+      
 
 
 
 ## Installation
 
-Please download the project into the same folder path with installed Please download the project into the same folder path
-with installed Yolov7 or Yolov3, Yolov4, Yolov5
+Please download the project into the same folder path with installed Yolov7 or Yolov3, Yolov4, Yolov5
 
 ```bash
   git clone https://github.com/qiumei1101/Multiple_ROI_lane_learning_system_for_Highway.git
