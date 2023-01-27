@@ -38,4 +38,4 @@ To run tests, run the following command
 ```
 
 # The final lane learning result will be:
-![alt text]( https://github.com/qiumei1101/Multiple_ROI_lane_learning_system_for_Highway.git/master/results/1-065-115-5-1+2020-09-05+14.42/4_lane_learning_in_multiple_ROI.png?raw=true)
+![alt text](./results/1-065-115-5-1+2020-09-05+14.42/4_lane_learning_in_multiple_ROI.png?raw=true)
