@@ -90,13 +90,13 @@ while (time.time() - times_start < clyle_learning_period):
         if (type(frame) is np.ndarray):
             lane_learning_in_multiple_ROI, road_status_report, lane_annotations, global_lane_centers,\
             ROIs, all_lane_centers_x, ROI_index_list, global_lane_boundarises, lines = Cycle_learning_multiple_ROI(
-                collect_det_dots_including_truck, frame, filepath, learning_cycle,lambda_thres)
+                collect_cars, frame, filepath, learning_cycle,lambda_thres)
 
             left_lane_nums = len([i for i in lane_annotations if i < 0])
             right_lane_nums = len([i for i in lane_annotations if i > 0])
 
 
-            Display_Cycle_learning_multiple_ROI(collect_det_dots_including_truck,lane_learning_in_multiple_ROI, frame,
+            Display_Cycle_learning_multiple_ROI(collect_cars,lane_learning_in_multiple_ROI, frame,
                                                 filepath, learning_cycle, lane_annotations,
                                                 global_lane_centers, all_lane_centers_x)
         '''Cycle learning stops when both the two sides reach to 'M' status, or one road side has no lane detected

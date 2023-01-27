@@ -34,8 +34,8 @@ To run tests, run the following command
 ```
 ```bash
   #use the following command for recorded video
-  python MROI_Lane_Learning_System.py --video_path='/media/meiqiu/CA8C57E38C57C919/MEIREQUESTEDVIDEOS/sunny/1-065-115-5-1+2020-09-05+14.42.mp4' --saving_path='/home/meiqiu@ads.iu.edu/JTRP_project/Multiple ROI and Lane Learning System/results/' --detector='YOLO_v7' 
+  python MROI_Lane_Learning_System.py --video_path='/media/meiqiu/CA8C57E38C57C919/MEIREQUESTEDVIDEOS/sunny/1-065-115-5-1+2020-09-05+14.42.mp4' --saving_path='/home/meiqiu@ads.iu.edu/JTRP_project/Multiple_ROI_lane_learning_system_for_Highway/results/' --detector='YOLO_v7' 
 ```
 
 # The final lane learning result will be:
-![alt text](./results/1-065-115-5-1+2020-09-05+14.42/4_lane_learning_in_multiple_ROI.png?raw=true)
+![alt text](./results/1-465-008-2-1+2020-08-10+14.50/1_lane_learning_in_multiple_ROI.png?raw=true)

@@ -1,0 +1,15 @@
+Execution Time for generate road map contour1: 0.109
+Execution Time for generate roi baseline1: 2.635
+Execution Time for generate lane center1: 0.305
+Execution Time for grouping1_0: 0.401
+Execution Time for lanefitting1_0: 0.006
+Execution Time for lanedirection1_0: 0.021
+Execution Time for laneboundary1_0: 0.002
+Execution Time for grouping1_1: 0.279
+Execution Time for lanefitting1_1: 0.004
+Execution Time for lanedirection1_1: 0.012
+Execution Time for laneboundary1_1: 0.001
+Execution Time for total lane grouping: 0.679
+Execution Time for total lane fitting: 0.009
+Execution Time for total lane direction: 0.033
+Execution Time for total lane boundary: 0.003
