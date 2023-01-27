@@ -14,7 +14,7 @@ parser.add_argument('--video_path', default='/media/meiqiu/CA8C57E38C57C919/MEIR
 parser.add_argument('--saving_path', default='/home/meiqiu@ads.iu.edu/JTRP_project/Multiple ROI and Lane Learning System/'
                                              '/results/',
                     help='path to save results')
-parser.add_argument('--detector', type=str, default='YOLO_v7', choices=['YOLO_v3', 'YOLO_v4','YOLO_v5','Yolov7'])
+parser.add_argument('--detector', type=str, default='YOLO_v7', choices=['YOLO_v3', 'YOLO_v4','YOLO_v5','YOLO_v7'])
 parser.add_argument('--T', type=int, default=60, help='Time interval of each cycle, the unit is second')
 parser.add_argument('--conf_thre', type=float, default='0.25', help='Detection confidence score threshold when creating '
                                                                     'the road segment')
