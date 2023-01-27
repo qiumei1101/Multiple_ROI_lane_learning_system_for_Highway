@@ -29,7 +29,7 @@ To run tests, run the following command
 
 ```bash
   python MROI_Lane_Learning_System.py --video_path='rtsp://10.6.25.24' --saving_path='/home/meiqiu@ads.iu.edu/
-  JTRP_project/Multiple ROI and Lane Learning System/results/' --detector='YOLO_v7' 
+  JTRP_project/Multiple_ROI_lane_learning_system_for_Highway/results/' --detector='YOLO_v7' 
   #here you can replace the camera id with any camera ip you plan to test
 ```
 ```bash
