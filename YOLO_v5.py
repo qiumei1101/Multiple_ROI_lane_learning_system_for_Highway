@@ -1,11 +1,11 @@
 import sys
-# relative_darknet_path = "../" #Comment this if darknet.py is in the same directory as this file
-# sys.path.append(relative_darknet_path)
-relative_darknet_path = "/home/meiqiu@ads.iu.edu/JTRP_project/yolov5" #Comment this if darknet.py is in the same directory as this file
+relative_darknet_path = "../" #Comment this if darknet.py is in the same directory as this file
+sys.path.append(relative_darknet_path)
+relative_darknet_path = "../yolov5" #Comment this if darknet.py is in the same directory as this file
 
 # relative_darknet_path = "../yolov5_attention" #Comment this if darknet.py is in the same directory as this file
 sys.path.append(relative_darknet_path)
-print("relative_darknet_path",relative_darknet_path)
+
 from yolov5.models.common import DetectMultiBackend
 from yolov5.utils.general import (LOGGER, check_file, check_img_size, check_imshow, check_requirements, colorstr, cv2,
                            increment_path, non_max_suppression, print_args, scale_coords, strip_optimizer, xyxy2xywh)
@@ -19,12 +19,12 @@ import time
 class YOLO_darknet:
     def __init__(self):
         self.imgsz = (640, 640)
-        self.weights = 'runs/train/exp_defalut_hyp_300_yolov5x_next400/weights/best.pt'
+        self.weights = 'yolov5x.pt'
 
         # self.weights = 'runs/train/exp_defalut_hyp_300_yolov5x_2cbam_next400eph_betterperformance_third_train/weights/best.pt'
         self.conf_thres = 0.25
         self.iou_thres= 0.45
-        self.data = 'data/cocoJTRP.yaml'
+        self.data = 'data/coco128.yaml'
         self.device = ''
         self.augment = False
         self.visualize = False
@@ -85,7 +85,7 @@ class YOLO_darknet:
                 clss = clss.tolist()
                 # print("clss",clss)
                 for xyxy in xywh:
-                    if clss[xywh.index(xyxy)]==0 or clss[xywh.index(xyxy)]==1:
+                    if int(clss[xywh.index(xyxy)])==7 or int(clss[xywh.index(xyxy)])==2:
                         if clss[xywh.index(xyxy)]==2:
                             label ='car'
                         else:
@@ -94,6 +94,6 @@ class YOLO_darknet:
                         boxes_list.append([int(xyxy[0]-xyxy[2]/2), int(xyxy[1]-xyxy[3]/2), int(xyxy[2]), int(xyxy[3])])
                         confidence.append(confs[xywh.index(xyxy)])
                         classes.append(label)
-                        ratios.append(xyxy[2]/xyxy[3])
 
-            return detection_list, boxes_list, confidence, ratios, classes, fps
+
+            return detection_list, boxes_list, confidence, classes, fps

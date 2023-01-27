@@ -1,9 +1,24 @@
-def lane_boundaries_engine(lane_center_table,lane_centers, lane_annotations,median_width_height_each_y):
+def lane_boundaries_engine(lane_center_table,lane_centers,median_width_height_each_y):
+    """
+      Function:  lane_boundaries_engine
+      --------------------
+      generate lane boundary of each lane based on the lane curve
+      and estimated lane width at current y pixel position;
 
+        lane_center_table: lane center position in all y pixel position in the ROI;
+        generated in file Create_Lane_Center_Table.py
+        lane_centers: lane center position in current ROI
+        median_width_height_each_y: estimated car's median width and height in current ROI
+
+       returns: lane_boundaries, containing each lane's left and right lane boundary
+                position along the lane curves in the ROI
+    """
     global lane_annotation_right_boundary, lane_annotation_left_boundary, index
     lane_annotation_right_boundary = 0
     lane_annotation_left_boundary = 0
     lane_boundaries = {}
+    small_margin = 10
+    large_margin = 65
     if len(lane_centers)>0:
         y_list=list(median_width_height_each_y[lane_centers[0]].keys())
         lane_boundaries.fromkeys(lane_centers)
@@ -64,10 +79,10 @@ def lane_boundaries_engine(lane_center_table,lane_centers, lane_annotations,medi
 
                      lane_boundaries[lane_centers[index]][y]['center'] = lane_center_table[y][
                          index]
-                     if abs(lane_annotation_left_boundary-lane_center_table[y][index])<=10:
-                         lane_annotation_left_boundary = lane_center_table[y][index]-65
-                     if abs(lane_annotation_right_boundary - lane_center_table[y][index]) <= 10:
-                         lane_annotation_right_boundary = lane_center_table[y][index] + 65
+                     if abs(lane_annotation_left_boundary-lane_center_table[y][index])<=small_margin:
+                         lane_annotation_left_boundary = lane_center_table[y][index]-large_margin
+                     if abs(lane_annotation_right_boundary - lane_center_table[y][index]) <= small_margin:
+                         lane_annotation_right_boundary = lane_center_table[y][index] + large_margin
                      lane_boundaries[lane_centers[index]][y][
                          'left_boundary_x'] = lane_annotation_left_boundary
                      lane_boundaries[lane_centers[index]][y][

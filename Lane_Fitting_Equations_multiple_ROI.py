@@ -1,8 +1,18 @@
-import cv2
 import numpy as np
-
-
 def lane_fitting_engine(LCx,lane_centers,baseline,roi_up,roi_down,h):
+    """
+        Function:  lane_fitting_engine
+        --------------------
+          fitting lane curve of each lane based on the grouping results with a quadratic polynomial: y = a*x^2+b*x+c,
+          (x,y) represents the center coordinate of each detected vehicle
+          LCx: grouped vehicles to each lane
+          baseline: reference line in the ROI
+          lane_centers: lane center positions at the baseline in the ROI
+          roi_up: up boundary of the ROI
+          roi_down: bottom boundary of the ROI
+          h: height of each ROI
+         returns: road_fitting_equations,dots_for_alllanes,median_width_height_each_y
+      """
     dots_for_alllanes = {}
     dots_for_alllanes.fromkeys(lane_centers)
     dots_for_alllanes_cen = {}
@@ -30,8 +40,6 @@ def lane_fitting_engine(LCx,lane_centers,baseline,roi_up,roi_down,h):
                     dots_for_alllanes[keyy].append(item)
 
 
-    colors = [(255, 0, 0), (0, 255, 255), (0, 0, 255), (0, 128, 255), (0, 255, 0), (0, 0, 0), (0, 128, 0), (200, 100, 0),(100,100,100),(120,120,120),(130,120,129),(230,222,120)]
-
     #check the width and height in each y:
     for lane in lane_centers:
         average_median_width=[]
@@ -48,12 +56,15 @@ def lane_fitting_engine(LCx,lane_centers,baseline,roi_up,roi_down,h):
                 median_width_height_each_y[lane][y].append((np.mean(average_median_width), np.mean(average_median_height)))
             else:
                 median_width_height_each_y[lane][y].append((np.mean(average_median_width), np.mean(average_median_height)))
+
+
     road_fitting_equations={}
     road_fitting_equations.fromkeys(lane_centers,[])
     for key in list(dots_for_alllanes.keys()):
         road_fitting_equations[key]=[]
         px = []
         py = []
+
         for item in dots_for_alllanes[key]:
             px.append(item[0])
             py.append(item[1])
@@ -64,7 +75,5 @@ def lane_fitting_engine(LCx,lane_centers,baseline,roi_up,roi_down,h):
             road_fitting_equations[key].append([])
             continue
         coef = np.polyfit(py, px, 2)
-
         road_fitting_equations[key].append(coef)
-    # print("median_width_height_each_y",median_width_height_each_y)
     return road_fitting_equations,dots_for_alllanes,median_width_height_each_y

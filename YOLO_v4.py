@@ -5,19 +5,20 @@ import random
 import time
 
 import sys
-relative_darknet_path = "../../darknet_master" #Comment this if darknet.py is in the same directory as this file
+relative_darknet_path = "../darknet_master" #Comment this if darknet.py is in the same directory as this file
 sys.path.append(relative_darknet_path) #Comment this if darknet.py is in the same directory as this file
 import darknet #Ignore the import warning if darknet.py is in ../<"directory-name">
-
-
 class YOLO_darknet:
     def __init__(self):
-
-        self.config_file = "cfg/yolov4.cfg"
-        self.data_file = "cfg/coco.data"
+        # self.config_file = "cfg/yolov4.cfg"
+        # self.data_file = "cfg/coco.data"
+        # # # self.input_size = 320
+        # self.weights = "yolov4.weights"
+        self.config_file = "cfg/yolov4-obj_mixed.cfg"
+        self.data_file = "cfg/obj.data"
         # self.input_size = 320
-        self.weights = "yolov4.weights"
-        self.thresh = .20
+        self.weights = "yolov4-obj_mixed_best.weights"
+        self.thresh = .213
         self.netMain = None
         self.metaMain = None
         ################################################################
@@ -69,12 +70,12 @@ class YOLO_darknet:
         prev_time = time.time()
         detections = darknet.detect_image(self.network, self.class_names, self.darknet_image, thresh=self.thresh)
         fps = int(1 / (time.time() - prev_time))
-        # print("FPS: {}".format(fps))
+        print("FPS: {}".format(fps))
         detection_list = []
         boxes_list = []
         confidence = []
         classes = []
-
+        ratios =[]
         for detection in detections:
             x, y, w, h = detection[2][0], \
                          detection[2][1], \
@@ -94,9 +95,11 @@ class YOLO_darknet:
             if label == "train":
                 label = "truck"
             # if label == "car" or label == "truck" or label == "bus" or:
-            detection_list.append([label, conf, int(xyxy[0]), int(xyxy[1]), int(w), int(h)])
-            boxes_list.append([int(xyxy[0]), int(xyxy[1]), int(w), int(h)])
-            confidence.append(conf)
-            classes.append(label)
+            if int(xyxy[0])>=0 and int(xyxy[1])>=0 and  int(w)>=0 and int(h)>=0:
+                detection_list.append([label, conf, int(xyxy[0]), int(xyxy[1]), int(w), int(h)])
+                boxes_list.append([int(xyxy[0]), int(xyxy[1]), int(w), int(h)])
+                confidence.append(conf)
+                classes.append(label)
+                ratios.append(w/h)
 
-        return detection_list, boxes_list, confidence, classes, fps
+        return detection_list, boxes_list, confidence,classes, fps

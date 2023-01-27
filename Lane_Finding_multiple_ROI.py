@@ -361,9 +361,7 @@ def lane_finding_engine(frame,learing_cycle,collect_det_dots,remain_cnts, baseli
         required_cars = []  # Cars within 10 pixels up and 10 pixels down the baseline
         intersection_points = []  # x-axis coordinates of cars within 10 pixels up and 10 pixels down the baseline
         widths = []  # bounding box width of cars within 10 pixels up and 10 pixels down the baseline
-        # vehicles_up_baseline_frame_ids=[]
-        # vehicles_down_baseline_frame_ids=[]
-        dirc=0
+
         for item in collect_det_dots:
             if remain_cnts!=None:
               if cv2.pointPolygonTest(remain_cnts[baseline.index(baseline_)],(item[0],item[1]),False)>0:
@@ -371,14 +369,7 @@ def lane_finding_engine(frame,learing_cycle,collect_det_dots,remain_cnts, baseli
                 if baseline_[2] - 18< item[1] < baseline_[2] +18 and item[0]>=baseline_[0] and item[0]<=baseline_[1]:
 
                     required_cars.append(item)
-        #check direction:
-        # print("vehicles_up_baseline_frame_ids",vehicles_up_baseline_frame_ids)
-        # print("vehicles_down_baseline_frame_ids",vehicles_down_baseline_frame_ids)
-        # if np.mean(vehicles_up_baseline_frame_ids)>np.mean(vehicles_down_baseline_frame_ids):
-        #     dirc=-1
-        # else:
-        #     dirc=1
-        # print("len(required_cars",len(required_cars))
+
         for item in required_cars:
             intersection_points.append(item[0])
 
@@ -470,8 +461,6 @@ def lane_finding_engine(frame,learing_cycle,collect_det_dots,remain_cnts, baseli
                     Local_Minimas.append(Y[i])
                     valleys_x.append(X[i])
 
-            # print("Local Minimas ", Local_Minimas)
-            # print("Local Minimas X Values ", valleys_x)
             X_final = []
             X_updated = X_original[:]
             heights_updated = heights_original[:]
@@ -491,11 +480,8 @@ def lane_finding_engine(frame,learing_cycle,collect_det_dots,remain_cnts, baseli
                 index_max = np.argmax(heights_updated)
                 next_peak = X_updated[index_max]
 
-                # print("Next Peak ", next_peak)
                 if checkLaneWithDifference_1point2(next_peak, X_final, median_width) == True:
                     X_final.append(next_peak)
-                    # print("Adding", next_peak, "As a Lane")
-                    # print("Next Peak ", next_peak, "is at distance >= 1.2*median_width from known lanes : So its A Lane")
 
                 elif checkLaneWithDifference_0point70(next_peak, X_final, median_width, X_original, heights_original) == False:
                     # print("Distance between peak and adjacent lane is < 0.7*median_width :", next_peak,)
@@ -538,11 +524,7 @@ def lane_finding_engine(frame,learing_cycle,collect_det_dots,remain_cnts, baseli
             for lene_ in del_lanes:
                 X_final.remove(lene_)
             X_final = [int(i) for i in X_final]
-            # X_final=[]
-            # if baseline.index(baseline_)==0:
-            #     X_final=[1002, 1065]
-            # else:
-            #     X_final = [1060, 1110]
+
             for i in X_final:
                 lane_centers_final.append((i,baseline_[2],baseline.index(baseline_)))
                 plot.axvline(i, c='r')
@@ -554,6 +536,7 @@ def lane_finding_engine(frame,learing_cycle,collect_det_dots,remain_cnts, baseli
             # plt.title("Lane Finding in the ROI")
             filename = str(learing_cycle)+'_'+str(baseline.index(baseline_))+'_'+ "lane.png"
             plot.savefig(os.path.join(filepath,filename))
+            plot.close()
             # plot.show()
             print("Final Set of Lanes", X_final)
 

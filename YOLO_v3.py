@@ -104,6 +104,6 @@ class YOLO_darknet:
                 boxes_list.append([int(xyxy[0]), int(xyxy[1]), int(w), int(h)])
                 confidence.append(conf)
                 classes.append(label)
-                ratios.append(w/h)
+                # ratios.append(w/h)
 
-        return detection_list, boxes_list, confidence,ratios, classes, fps
+        return detection_list, boxes_list, confidence,classes, fps

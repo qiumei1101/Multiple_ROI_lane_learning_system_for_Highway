@@ -4,9 +4,24 @@ import numpy as np
 import os
 kernel = np.ones((3,3),np.uint8)
 
-def create_heatmap(learning_cycle,vehicles, im,filepath):
-    heatmap_area = np.zeros_like(im[:, :, 0]).astype(np.float)
-    h, w = im.shape[:2]
+def create_binary_image(learning_cycle,vehicles, frame,filepath):
+    """
+      Function:  create_heatmap
+      --------------------
+      create a binary image based on the positions of detected vehicles in the whole frame
+
+        learning_cycle: the index of lane learning time, ex: if learning_cycle=2 means
+        it is the second time learning
+        vehicles: accumulated detected vehicles from the whole frame,
+        the format of each item inside it is [x,y,w,h,fid,c]
+        frame: current input video frame
+        filepath: saving folder path
+       returns: binary_image, remain_vehicles
+                binary_image is the generated 2D binary image and remain_vehicles are the detected vehicle
+                data inside the heatmap_area whose value is 1.
+    """
+    binary_image = np.zeros_like(frame[:, :, 0]).astype(np.float)
+    h, w = frame.shape[:2]
     conf=[]
     length_=len(vehicles)
     index =0
@@ -25,7 +40,7 @@ def create_heatmap(learning_cycle,vehicles, im,filepath):
     while(index < length_):
             if vehicles[index][-1] >p1:
                 remain_vehicles.append(vehicles[index])
-                heatmap_area[int(vehicles[index][1]-vehicles[index][3]/raito):int(vehicles[index][1]+vehicles[index][3]/raito),int(vehicles[index][0]-vehicles[index][2]/raito):int(vehicles[index][0]+vehicles[index][2]/raito)]=1
+                binary_image[int(vehicles[index][1]-vehicles[index][3]/raito):int(vehicles[index][1]+vehicles[index][3]/raito),int(vehicles[index][0]-vehicles[index][2]/raito):int(vehicles[index][0]+vehicles[index][2]/raito)]=1
             index+=1
 
     conf = []
@@ -101,13 +116,14 @@ def create_heatmap(learning_cycle,vehicles, im,filepath):
     # plt.colorbar()
     # plt.savefig(os.path.join(filepath,"heatmap_centroid.png"))
     # plt.show()
+    # plt.close()
 
     ##################################################find contours
 
-    heatmap_area=heatmap_area*255
-    heatmap_area = heatmap_area.astype(np.uint8)
+    binary_image=binary_image*255
+    binary_image = binary_image.astype(np.uint8)
 
-    cv2.imwrite(os.path.join(filepath,str(learning_cycle)+'_'+'binary_heatmap_area_cars.png'), heatmap_area)
+    cv2.imwrite(os.path.join(filepath,str(learning_cycle)+'_'+'binary_heatmap_area_cars.png'), binary_image)
     #
     j=0
     i=0
@@ -116,28 +132,28 @@ def create_heatmap(learning_cycle,vehicles, im,filepath):
             num = 0
             num_ = 0
             if i - 1 >= 0 and j - 1 >= 0 and i + 1 <= h - 1 and j + 1 <= w - 1:
-                if heatmap_area[i - 1][j] == 255:
+                if binary_image[i - 1][j] == 255:
                     num += 1
-                if heatmap_area[i + 1][j] == 255:
+                if binary_image[i + 1][j] == 255:
                     num += 1
-                if heatmap_area[i][j - 1] == 255:
+                if binary_image[i][j - 1] == 255:
                     num += 1
-                if heatmap_area[i][j + 1] == 255:
+                if binary_image[i][j + 1] == 255:
                     num += 1
-                if heatmap_area[i - 1][j - 1] == 255:
+                if binary_image[i - 1][j - 1] == 255:
                     num += 1
-                if heatmap_area[i + 1][j - 1] == 255:
+                if binary_image[i + 1][j - 1] == 255:
                     num += 1
-                if heatmap_area[i - 1][j - 1] == 255:
+                if binary_image[i - 1][j - 1] == 255:
                     num += 1
-                if heatmap_area[i + 1][j + 1] == 255:
+                if binary_image[i + 1][j + 1] == 255:
                     num += 1
 
                 if num / 8 >= 1 / 3:
-                    heatmap_area[i][j] = 255
+                    binary_image[i][j] = 255
             i+=1
             j+=1
 
-    cv2.imwrite(os.path.join(filepath, str(learning_cycle)+'_'+'binary_heatmap_area.png'), heatmap_area)
-    return heatmap_area,remain_vehicles
+    cv2.imwrite(os.path.join(filepath, str(learning_cycle)+'_'+'binary_heatmap_area.png'), binary_image)
+    return binary_image,remain_vehicles
 

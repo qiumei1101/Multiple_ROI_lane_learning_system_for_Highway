@@ -1,14 +1,23 @@
 import math
-
 import cv2
 import os
-import numpy as np
-# from test_dbscan import main as dbscan
-import  matplotlib.pyplot as plt
 def generate_contour(learning_cycle,binary_image,frame,filepath):
+    """
+      Function:  generate_contour
+      --------------------
+      generate valid road contour based on generated binary image in the last step
+
+        learning_cycle: the index of lane learning time, ex: if learning_cycle=2 means
+        it is the second time learning
+        binary_image: binary image created in file Create_Heatmap.py
+        frame: current input video frame
+        filepath: saving folder path
+
+       returns: remain_cnts which are the valid road contours' set
+    """
     cnts = cv2.findContours(binary_image, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     cnts = cnts[0] if len(cnts) == 2 else cnts[1]
-
+    #set thres to remove too large or too small regions
     min_area =12000
     max_area = 6000000
     remain_cnts=[]

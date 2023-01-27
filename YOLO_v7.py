@@ -1,6 +1,6 @@
 import sys
-# relative_darknet_path = "../" #Comment this if darknet.py is in the same directory as this file
-# sys.path.append(relative_darknet_path)
+relative_darknet_path = "../" #Comment this if darknet.py is in the same directory as this file
+sys.path.append(relative_darknet_path)
 relative_darknet_path = "../yolov7" #Comment this if darknet.py is in the same directory as this file
 
 # relative_darknet_path = "../yolov5_attention" #Comment this if darknet.py is in the same directory as this file
@@ -31,7 +31,7 @@ class YOLO_darknet:
         self.conf_thres = 0.25
         self.iou_thres= 0.45
         self.data = 'data/coco.yaml'
-        self.device = 'cuda:0'
+        self.device = ''
         self.augment = False
         self.visualize = False
         self.img_size=640
@@ -133,6 +133,6 @@ class YOLO_darknet:
                         boxes_list.append([int(xyxy[0]-xyxy[2]/2), int(xyxy[1]-xyxy[3]/2), int(xyxy[2]), int(xyxy[3])])
                         confidence.append(confs[xywh.index(xyxy)])
                         classes.append(label)
-                        ratios.append(xyxy[2]/xyxy[3])
+                        # ratios.append(xyxy[2]/xyxy[3])
 
-            return detection_list, boxes_list, confidence, ratios, classes, fps
+            return detection_list, boxes_list, confidence, classes, fps

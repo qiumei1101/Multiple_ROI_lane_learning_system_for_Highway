@@ -4,6 +4,13 @@ import numpy as np
 import  matplotlib.pyplot as plt
 from joblib import Parallel, delayed
 def findlane_intersect(i,data_inputs):
+    """
+      Function:  findlane_intersect
+      --------------------
+      finding intersections between lines which are parallel to the baseline and the road boundaries
+
+       returns: intersected points' positions
+    """
     blank_mask = np.zeros((data_inputs[0], data_inputs[1], 3), np.uint8)
     cv2.drawContours(blank_mask, data_inputs[2], -1, (0, 255, 0), 1)
     contours_idx = blank_mask[..., 1] == 255
@@ -13,13 +20,25 @@ def findlane_intersect(i,data_inputs):
     lines_idx = blank_mask[..., 0] == 255
     overlap = np.where(contours_idx * lines_idx)
     return overlap
-def generate_ROI_baseline(learning_cycle,remain_cnts,frame,remain_vehicles,filepath):
 
+
+def generate_ROI_baseline(learning_cycle,remain_cnts,frame,remain_vehicles,filepath):
+    """
+      Function:  generate_ROI_baseline
+      --------------------
+     generate optimal ROI and baseline in each valid road segment
+
+        remain_cnts: valid road contours
+        frame: current input frame
+        remain_vehicles: valid vehicles in the road contours
+        filepath: saving folder path
+       returns: return input frame, learned baseline and ROI sets in the road segment
+    """
     contours_centers=[]
     baseline_and_ROI =[]
     index = 0
     h0,w0=frame.shape[:2]
-    road_bound=[]
+
     for c in remain_cnts:
             vehicles_in_road=[]
             conf_in_road=[]
@@ -110,22 +129,24 @@ def generate_ROI_baseline(learning_cycle,remain_cnts,frame,remain_vehicles,filep
                 plt.rcParams["font.weight"] = "bold"
                 plt.rcParams["axes.labelweight"] = "bold"
 
-                if learning_cycle==2 and index==2:
-                    ax = plt.gca()
-                    ax.plot(position_list, np.array(count_list) * np.array(conf_list), color='k')
-                    y_range_2 = ax.get_ylim()
-                    ax.set_ylabel("Avg Conf*Count")
-                    plt.vlines(cY-20, y_range_2[0], y_range_2[1], colors='k')
-                    plt.text(cY-20, 1 / 3 * (y_range_2[1] - y_range_2[0])-5, 'cY',fontsize=10)
-                    plt.vlines(roi_down, y_range_2[0], y_range_2[1], colors='m')
-                    plt.text(roi_down+3, 1 / 3 * (y_range_2[1] - y_range_2[0])-10, 'ROI\ndown',fontsize=10)
-                    plt.vlines(roi_up, y_range_2[0], y_range_2[1], colors='c')
-                    plt.text(roi_up+3, 1 / 3 * (y_range_2[1] - y_range_2[0])+10, 'ROI\nup',fontsize=10)
-                    plt.vlines(baseline, y_range_2[0], y_range_2[1], colors='r')
-                    plt.text(baseline+5, 1/ 3 * (y_range_2[1] - y_range_2[0])+15, 'baseline',fontsize=10)
-                    plt.xlabel("Pixel Position at Y axis")
-                    save_name = os.path.join(filepath, str(learning_cycle)+'_'+str(index)+'_'+"conf_count.png")
-                    plt.savefig(save_name)
+
+                ax = plt.gca()
+                ax.plot(above_cY_position_list, np.array(above_cY_count_list) * np.array(above_cY_conf_list), color='k')
+                y_range_2 = ax.get_ylim()
+                ax.set_ylabel("Avg Conf*Count")
+                plt.vlines(cY, y_range_2[0], y_range_2[1], colors='k')
+                plt.text(cY, 3/4*(y_range_2[1] - y_range_2[0]), 'cY',fontsize=10)
+                plt.vlines(roi_down, y_range_2[0], y_range_2[1], colors='m')
+                plt.text(roi_down+3,  3/4*(y_range_2[1] - y_range_2[0]), 'ROI\ndown',fontsize=10)
+                plt.vlines(roi_up, y_range_2[0], y_range_2[1], colors='c')
+                plt.text(roi_up+3, 3/4*(y_range_2[1] - y_range_2[0]), 'ROI\nup',fontsize=10)
+                plt.vlines(baseline, y_range_2[0], y_range_2[1], colors='r')
+                plt.text(baseline+5,  3/4*(y_range_2[1] - y_range_2[0]), 'baseline',fontsize=10)
+                plt.xlabel("Pixel Position at Y axis")
+                save_name = os.path.join(filepath, str(learning_cycle)+'_'+str(index)+'_'+"conf_count.png")
+                plt.savefig(save_name)
+                plt.close()
+
                 x_boundary_list_left = []
                 valid_list_left =[]
                 all_x_boundary_list_left =[]
@@ -150,7 +171,7 @@ def generate_ROI_baseline(learning_cycle,remain_cnts,frame,remain_vehicles,filep
                       baseline_and_ROI.append((int(np.min(x_boundary_list_left)),int(np.max(x_boundary_list_right)),baseline,roi_up,roi_down,cX))
                 else:
                     baseline_and_ROI = []
-                road_bound.append(boundary_dict)
+
     global cnts
     cnts = None
     if baseline_and_ROI!=[] and remain_cnts!=None:
@@ -160,4 +181,4 @@ def generate_ROI_baseline(learning_cycle,remain_cnts,frame,remain_vehicles,filep
         cv2.line(frame, (item[0],item[2]),(item[1],item[2]), (0, 255, 255), 4)
     cv2.imwrite(os.path.join(filepath, str(learning_cycle)+'_'+'ROI_baseline.png'), frame)
 
-    return frame, baseline_and_ROI,road_bound,cnts
+    return frame, baseline_and_ROI,cnts
