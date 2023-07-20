@@ -138,8 +138,10 @@ def Cycle_learning_multiple_ROI(collect_cars,frame,filepath,learning_cycle,lambd
         current_time=time.time()
 
         ###########group vehicles to each lane in the ROI
-        LCx = Group_Vehicle_Points_To_Lane_multiple_ROI.group_points_engine(remain_vehicles, item[2], lane_center,
-                                                                            roi_up, roi_down,item[0],item[1],w)
+        LCx = Group_Vehicle_Points_To_Lane_multiple_ROI.group_points_engine_weaving(remain_vehicles, item[2], lane_center,
+                                                                            roi_up, roi_down, item[0], item[1],5, w,cnts)
+        # LCx = Group_Vehicle_Points_To_Lane_multiple_ROI.group_points_engine(remain_vehicles, item[2], lane_center,
+        #                                                                     roi_up, roi_down,item[0],item[1],w)
         t1= time.time()-current_time
         time_for_lane_grouping+=t1
 
@@ -174,7 +176,7 @@ def Cycle_learning_multiple_ROI(collect_cars,frame,filepath,learning_cycle,lambd
 
         ############generate lane boundary of each lane in the ROI
         lane_boundaries = lane_boundaries_engine(lane_center_table, lane_center,
-                                                 median_width_height_each_y)
+                                                 median_width_height_each_y,w)
 
         t4 = time.time() - current_time
         time_for_lane_boundary += t4
