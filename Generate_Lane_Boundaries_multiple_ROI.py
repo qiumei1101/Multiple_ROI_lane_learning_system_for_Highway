@@ -1,4 +1,4 @@
-def lane_boundaries_engine(lane_center_table,lane_centers,median_width_height_each_y):
+def lane_boundaries_engine(lane_center_table,lane_centers,median_width_height_each_y,w):
     """
       Function:  lane_boundaries_engine
       --------------------
@@ -40,16 +40,22 @@ def lane_boundaries_engine(lane_center_table,lane_centers,median_width_height_ea
          index=0
          for lane in lane_centers:
             for y in y_list:
-                lane_annotation_left_boundary = lane_center_table[y][lane_centers.index(lane)] - \
-                                                median_width_height_each_y[lane][y_mid][0][0]
-
-                lane_annotation_right_boundary = lane_center_table[y][index] + median_width_height_each_y[lane][y_mid][0][0]
+                if lane_center_table[y][lane_centers.index(lane)] - \
+                                                median_width_height_each_y[lane][y_mid][0][0]*1.5>=0:
+                    lane_annotation_left_boundary = lane_center_table[y][lane_centers.index(lane)] - \
+                                                    median_width_height_each_y[lane][y_mid][0][0]*1.5
+                else:
+                    lane_annotation_left_boundary=0
+                if lane_center_table[y][index] + median_width_height_each_y[lane][y_mid][0][0]*1.5<=w:
+                    lane_annotation_right_boundary = lane_center_table[y][index] + median_width_height_each_y[lane][y_mid][0][0]*1.5
+                else:
+                    lane_annotation_right_boundary = w
                 lane_boundaries[lane_centers[index]][y]['center'] = lane_center_table[y][
                     index]
-                if abs(lane_annotation_left_boundary - lane_center_table[y][index]) <= 10:
-                    lane_annotation_left_boundary = lane_center_table[y][index] - 65
-                if abs(lane_annotation_right_boundary - lane_center_table[y][index]) <= 10:
-                    lane_annotation_right_boundary = lane_center_table[y][index] + 65
+                # if abs(lane_annotation_left_boundary - lane_center_table[y][index]) <= 10:
+                #     lane_annotation_left_boundary = lane_center_table[y][index] - 65
+                # if abs(lane_annotation_right_boundary - lane_center_table[y][index]) <= 10:
+                #     lane_annotation_right_boundary = lane_center_table[y][index] + 65
                 lane_boundaries[lane_centers[index]][y][
                     'left_boundary_x'] = lane_annotation_left_boundary
                 lane_boundaries[lane_centers[index]][y][
@@ -61,15 +67,22 @@ def lane_boundaries_engine(lane_center_table,lane_centers,median_width_height_ea
                  for y in y_list:
                      if index==0:
 
-                         lane_annotation_left_boundary = lane_center_table[y][lane_centers.index(lane)] - \
-                                                             median_width_height_each_y[lane][y_mid][0][0]
+                         if lane_center_table[y][lane_centers.index(lane)] - \
+                                 median_width_height_each_y[lane][y_mid][0][0] * 1.5 >= 0:
+                             lane_annotation_left_boundary = lane_center_table[y][lane_centers.index(lane)] - \
+                                                             median_width_height_each_y[lane][y_mid][0][0] * 1.5
+                         else:
+                             lane_annotation_left_boundary = 0
                          lane_annotation_right_boundary = (lane_center_table[y][index + 1] +
                                                            lane_center_table[y][index]) / 2
 
                      elif index==len(lane_centers)-1:
                              lane_annotation_left_boundary = (lane_center_table[y][index] +
                                                           lane_center_table[y][index - 1]) / 2
-                             lane_annotation_right_boundary = lane_center_table[y][index] + median_width_height_each_y[lane][y_mid][0][0]
+                             if lane_center_table[y][index] + median_width_height_each_y[lane][y_mid][0][0]*1.5<=w:
+                                lane_annotation_right_boundary = lane_center_table[y][index] + median_width_height_each_y[lane][y_mid][0][0]*1.5
+                             else:
+                                lane_annotation_right_boundary = w
                      else:
 
                              lane_annotation_left_boundary = (lane_center_table[y][index] +
@@ -79,10 +92,10 @@ def lane_boundaries_engine(lane_center_table,lane_centers,median_width_height_ea
 
                      lane_boundaries[lane_centers[index]][y]['center'] = lane_center_table[y][
                          index]
-                     if abs(lane_annotation_left_boundary-lane_center_table[y][index])<=small_margin:
-                         lane_annotation_left_boundary = lane_center_table[y][index]-large_margin
-                     if abs(lane_annotation_right_boundary - lane_center_table[y][index]) <= small_margin:
-                         lane_annotation_right_boundary = lane_center_table[y][index] + large_margin
+                     # if abs(lane_annotation_left_boundary-lane_center_table[y][index])<=small_margin:
+                     #     lane_annotation_left_boundary = lane_center_table[y][index]-large_margin
+                     # if abs(lane_annotation_right_boundary - lane_center_table[y][index]) <= small_margin:
+                     #     lane_annotation_right_boundary = lane_center_table[y][index] + large_margin
                      lane_boundaries[lane_centers[index]][y][
                          'left_boundary_x'] = lane_annotation_left_boundary
                      lane_boundaries[lane_centers[index]][y][
