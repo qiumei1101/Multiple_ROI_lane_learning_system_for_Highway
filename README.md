@@ -1,6 +1,12 @@
 # It is a automatically lane learning system which can generate multiple ROIs based on vehicle detection confidence score on highway videos.
 # vehicle detection confidence scores; it can work on both online cameras and local videos.
 
+## System information of this code is tested on:
+OS: Ubuntu 20.04.6 LTS, 64-bit
+CPU: Intel® Core™ i7-9800X CPU @ 3.80GHz × 16 
+GPU: NVIDIA Corporation TU104GL [Quadro RTX 5000]
+CUDA version: 12.1
+
 
 ## Preparation
 
