@@ -44,3 +44,13 @@ To run tests, run the following command
 
 # The final lane learning result will be:
 ![alt text](./results/1-465-008-2-1+2020-08-10+14.50/1_lane_learning_in_multiple_ROI.png?raw=true)
+```bash
+  @article{qiu2024intelligent,
+  title={Intelligent Highway Adaptive Lane Learning System in Multiple ROIs of Surveillance Camera Video},
+  author={Qiu, Mei and Christopher, Lauren and Chien, Stanley Yung-Ping and Chen, Yaobin},
+  journal={IEEE Transactions on Intelligent Transportation Systems},
+  year={2024},
+  publisher={IEEE}
+}
+```
+
